@@ -10,7 +10,13 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
 {
     public class SuperFolioContext : DbContext
     {
-        public SuperFolioContext(DbContextOptions<SuperFolioContext> options)  : base(options)
+
+        public SuperFolioContext()
+        {
+
+        }
+
+        public SuperFolioContext(DbContextOptions<SuperFolioContext> options) : base(options)
         { 
         
         }
