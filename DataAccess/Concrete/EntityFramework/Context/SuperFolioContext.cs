@@ -11,14 +11,9 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
     public class SuperFolioContext : DbContext
     {
 
-        public SuperFolioContext()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-        }
-
-        public SuperFolioContext(DbContextOptions<SuperFolioContext> options) : base(options)
-        { 
-        
+            optionsBuilder.UseSqlServer("server=DESKTOP-UDO4HAR\\SQLEXPRESS;database=SuperFolioDB;integrated security=true");
         }
 
         public DbSet<About> Abouts { get; set; }

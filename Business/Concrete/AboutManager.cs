@@ -1,6 +1,4 @@
 ﻿using Business.Abstract;
-using Business.Constants;
-using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -20,16 +18,15 @@ namespace Business.Concrete
             _aboutDal = aboutDal;
         }
 
-        public IResult Add(About about)
+
+        void IAboutService.Add(About about)
         {
             _aboutDal.Add(about);
-
-            return new SuccessResult(Messages.Added);
         }
 
-        public IDataResult<List<About>> GetList()
+        List<About> IAboutService.GetList()
         {
-            return new SuccessDataResult<List<About>>(_aboutDal.GetList().ToList());
+            return _aboutDal.GetList().ToList();
         }
     }
 }

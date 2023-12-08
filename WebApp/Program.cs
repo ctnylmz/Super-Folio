@@ -1,3 +1,6 @@
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Business.DependencyResolvers.Autofac;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,10 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<SuperFolioContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"));
-});
+// Autofac
+builder.Host
+       .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+       .ConfigureContainer<ContainerBuilder>(builder =>
+       {
+           builder.RegisterModule(new AutofacBusinessModule());
+       });
 
 var app = builder.Build();
 

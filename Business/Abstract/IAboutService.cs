@@ -1,5 +1,4 @@
-﻿using Core.Utilities.Results;
-using Entities.Concrete;
+﻿using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +9,7 @@ namespace Business.Abstract
 {
     public interface IAboutService
     {
-        IResult Add(About about);
-
-        IDataResult<List<About>> GetList();
+        void Add(About about);
+        List<About> GetList();
     }
 }
