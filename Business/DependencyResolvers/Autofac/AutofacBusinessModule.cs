@@ -17,6 +17,12 @@ namespace Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<FeatureManager>().As<IFeatureService>().SingleInstance();
             builder.RegisterType<EfFeatureDal>().As<IFeatureDal>().SingleInstance();
+
+            builder.RegisterType<AboutManager>().As<IAboutService>().SingleInstance();
+            builder.RegisterType<EfAboutDal>().As<IAboutDal>().SingleInstance();
+
+            builder.RegisterType<ServiceManager>().As<IService>().SingleInstance();
+            builder.RegisterType<EfServiceDal>().As<IServiceDal>().SingleInstance();
         }
     }
 }
