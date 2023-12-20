@@ -6,16 +6,16 @@ namespace WebApp.Components.Service
 {
     public class ServiceList : ViewComponent
     {
-        IServiceDal _serviceDal;
+        IService _service;
 
-        public ServiceList(IServiceDal serviceDal)
+        public ServiceList(IService service)
         {
-            _serviceDal = serviceDal;
+            _service = service;
         }
 
         public IViewComponentResult Invoke()
         {
-            var result = _serviceDal.GetList();
+            var result = _service.GetList();
 
             return View(result);
         }

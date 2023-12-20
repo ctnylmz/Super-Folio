@@ -1,0 +1,26 @@
+﻿<div class="section px-2 px-lg-4 pt-5" id="portfolio">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="marker marker-center">Referanslarım</h2>
+        </div>
+        <div class="grid  pb-3" >
+            <div class="grid-sizer"></div>
+            @foreach (var item in Model)
+            {
+                <a href="/PortfolioDetails/@item.Id">
+                    <div class="grid-item">
+                        <figure class="portfolio-item">
+                            <img src="~/images/portfolio/@item.ImageUrl" />
+                            <figcaption>
+                                <h4 class="h5 mb-0">@item.Name</h4>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </a>
+
+
+            }
+
+        </div>
+    </div>
+</div>
