@@ -38,6 +38,12 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<TestimonialManager>().As<ITestimonialService>().SingleInstance();
             builder.RegisterType<EfTestimonialDal>().As<ITestimonialDal>().SingleInstance();
+
+            builder.RegisterType<ContactManager>().As<IContactService>().SingleInstance();
+            builder.RegisterType<EfContactDal>().As<IContactDal>().SingleInstance();
+
+            builder.RegisterType<MessageManager>().As<IMessageService>().SingleInstance();
+            builder.RegisterType<EfMessageDal>().As<IMessageDal>().SingleInstance();
         }
     }
 }

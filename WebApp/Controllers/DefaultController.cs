@@ -1,4 +1,6 @@
-﻿using DataAccess.Concrete.EntityFramework.Contexts;
+﻿using Business.Abstract;
+using DataAccess.Concrete.EntityFramework.Contexts;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
@@ -7,10 +9,13 @@ namespace WebApp.Controllers
     {
 
         private readonly SuperFolioContext _context;
+        
+        IMessageService _messageService;
 
-        public DefaultController(SuperFolioContext context)
+        public DefaultController(SuperFolioContext context, IMessageService messageService)
         {
             _context = context;
+            _messageService = messageService;
         }
 
         public IActionResult Index()
@@ -18,12 +23,6 @@ namespace WebApp.Controllers
             return View();
         }
        
-        [Route("PortfolioDetails/{id}")]
-        public IActionResult PortfolioDetails(int id)
-        {
-            var result = _context.Portfolios.Find(id);
-            return View(result);
-        }
 
         public PartialViewResult HeaderPartial()
         {
@@ -38,6 +37,24 @@ namespace WebApp.Controllers
         public PartialViewResult FooterPartial()
         {
             return PartialView();
+        }
+
+        [Route("PortfolioDetails/{id}")]
+        public IActionResult PortfolioDetails(int id)
+        {
+            var result = _context.Portfolios.Find(id);
+            return View(result);
+        }
+
+        [HttpPost]
+        [Route("SendMessage")]
+        public IActionResult SendMessage(Message message)
+        {
+            message.Status = false;
+
+            _messageService.Add(message);
+
+            return RedirectToAction("Index");
         }
     }
 }
