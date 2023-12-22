@@ -1,0 +1,46 @@
+﻿@using Entities.Concrete
+@model List<Skill>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-10 grid-margin stretch-card mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mt-2 ml-3">Skill Settings</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Value</th>
+                                    <th>Settings</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Name</td>
+
+                                        <td class="d-flex align-items-center">
+                                            <p class="mr-2 mt-2">@item.Value</p>
+                                            <div class="progress progress-md flex-grow-1">
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: @item.Value%" aria-valuenow="@item.Value" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+
+
+                                        <td>
+                                            <a href="/admin/Skill/Update/@item.Id" class="badge badge-success">Update</a>
+                                            <a href="/admin/Skill/Delete/@item.Id" class="badge badge-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
