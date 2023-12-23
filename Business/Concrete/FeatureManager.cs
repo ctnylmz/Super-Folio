@@ -29,5 +29,10 @@ namespace Business.Concrete
             return _featureDal.GetList().ToList();
 
         }
+
+        public void Update(Feature feature)
+        {
+            _featureDal.Update(feature);
+        }
     }
 }

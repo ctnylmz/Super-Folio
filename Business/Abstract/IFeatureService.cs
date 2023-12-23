@@ -10,6 +10,7 @@ namespace Business.Abstract
     public interface IFeatureService
     {
         void Add(Feature feature);
+        void Update(Feature feature);
         List<Feature> GetList();
 
 

@@ -10,6 +10,7 @@ namespace Business.Abstract
     public interface IAboutService
     {
         void Add(About about);
+        void Update(About about);
         List<About> GetList();
     }
 }

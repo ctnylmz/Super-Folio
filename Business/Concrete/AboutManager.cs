@@ -18,6 +18,10 @@ namespace Business.Concrete
             _aboutDal = aboutDal;
         }
 
+        public void Update(About about)
+        {
+          _aboutDal.Update(about);
+        }
 
         void IAboutService.Add(About about)
         {
