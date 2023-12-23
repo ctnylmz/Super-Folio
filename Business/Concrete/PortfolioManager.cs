@@ -23,9 +23,26 @@ namespace Business.Concrete
             _portfolioDal.Add(portfolio);
         }
 
+        public void Delete(Portfolio portfolio)
+        {
+            _portfolioDal.Delete(portfolio);
+
+        }
+
+        public Portfolio Get(int Id)
+        {
+            return _portfolioDal.Get(p => p.Id == Id);
+        }
+
         public List<Portfolio> GetList()
         {
            return _portfolioDal.GetList().ToList();
+        }
+
+        public void Update(Portfolio portfolio)
+        {
+            _portfolioDal.Update(portfolio);
+
         }
     }
 }

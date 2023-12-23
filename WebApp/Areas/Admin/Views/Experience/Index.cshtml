@@ -1,0 +1,47 @@
+﻿@using Entities.Concrete
+@model List<Experience>
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 mx-auto grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Experience Settings</h4>
+                    <a href="/admin/Experience/add" class="btn btn-outline-primary w-100 my-2">Add Experience</a>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Date Time</th>
+                                    <th>Description</th>
+                                    <th>Img</th>
+                                    <th>Settings</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td>@item.Date</td>
+                                        <td>
+                                            @(item.Description.Length <= 20 ? item.Description : item.Description.Substring(0, 20) + "...")
+                                        </td>
+                                        <td>@item.ImageUrl</td>
+                                        <td>
+                                            <a class="badge badge-success" href="/Admin/Experience/Update/@item.Id">Update</a>
+                                            <a class="badge badge-danger" href="/Admin/Experience/Delete/@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

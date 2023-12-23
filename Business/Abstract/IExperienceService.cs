@@ -11,5 +11,8 @@ namespace Business.Abstract
     {
         void Add(Experience experience);
         List<Experience> GetList();
+        void Delete(Experience experience);
+        void Update(Experience experience);
+        Experience Get(int Id);
     }
 }

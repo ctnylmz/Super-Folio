@@ -11,5 +11,8 @@ namespace Business.Abstract
     {
         void Add(Portfolio portfolio);
         List<Portfolio> GetList();
+        void Delete(Portfolio portfolio);
+        void Update(Portfolio portfolio);
+        Portfolio Get(int Id);
     }
 }
