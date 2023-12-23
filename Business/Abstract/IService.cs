@@ -11,5 +11,8 @@ namespace Business.Abstract
     {
         void Add(Service service);
         List<Service> GetList();
+        void Delete(Service service);
+        void Update(Service service);
+        Service Get(int Id);
     }
 }

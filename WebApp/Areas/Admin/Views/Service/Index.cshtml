@@ -1,0 +1,49 @@
+﻿@using Entities.Concrete
+@model List<Service>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-9 mx-auto grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Service Settings</h4>
+                    <a class="btn btn-outline-primary w-100 my-2" href="/Admin/Service/Add">Add Service</a>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Images
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Settings
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="~/images/services/@item.ImageUrl" alt="image" />
+                                        </td>
+                                        <td>
+                                            @item.Title
+                                        </td>
+
+                                        <td>
+                                            <a class="badge badge-success" href="/Admin/Service/Update/@item.Id">Update</a>
+                                            <a class="badge badge-danger" href="/Admin/Service/Delete/@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

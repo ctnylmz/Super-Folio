@@ -24,10 +24,25 @@ namespace Business.Concrete
             _serviceDal.Add(service);
         }
 
+        public void Delete(Service service)
+        {
+            _serviceDal.Delete(service);
+        }
+
+        public Service Get(int Id)
+        {
+          return _serviceDal.Get(s => s.Id == Id);
+        }
+
         public List<Service> GetList()
         {
             return _serviceDal.GetList().ToList();
 
+        }
+
+        public void Update(Service service)
+        {
+            _serviceDal.Update(service);
         }
     }
 }
