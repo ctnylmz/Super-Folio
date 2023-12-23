@@ -23,9 +23,24 @@ namespace Business.Concrete
             _skillDal.Add(skill);
         }
 
+        public void Delete(Skill skill)
+        {
+            _skillDal.Delete(skill);
+        }
+
+        public Skill Get(int Id)
+        {
+            return _skillDal.Get(s =>s.Id == Id);
+        }
+
         public List<Skill> GetList()
         {
            return _skillDal.GetList().ToList();
+        }
+
+        public void Update(Skill skill)
+        {
+            _skillDal.Update(skill);
         }
     }
 }

@@ -10,7 +10,10 @@ namespace Business.Abstract
     public interface ISkillService
     {
         void Add(Skill skill);
-
         List<Skill> GetList();
+        void Delete(Skill skill);
+        void Update(Skill skill);
+        Skill Get(int Id);
+
     }
 }

@@ -35,5 +35,31 @@ namespace WebApp.Areas.Admin.Controllers
             _skillService.Add(skill);
             return RedirectToAction("Index");
         }
+
+        [Route("Admin/Skill/Delete/{Id}")]
+        [HttpGet]
+        public IActionResult Add(int Id)
+        {
+            var skill = _skillService.Get(Id);  
+            _skillService.Delete(skill);
+            return RedirectToAction("Index");
+
+        }
+
+        [Route("Admin/Skill/Update/{id}")]
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var skill = _skillService.Get(id);
+            return View(skill);
+        }
+
+        [Route("Admin/Skill/Update/{id}")]
+        [HttpPost]
+        public IActionResult Update(Skill skill)
+        {
+            _skillService.Update(skill);
+            return RedirectToAction("Index");
+        }
     }
 }
