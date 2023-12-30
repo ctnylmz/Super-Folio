@@ -1,21 +1,32 @@
-﻿using Autofac;
+﻿// Program.cs
+using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business.DependencyResolvers.Autofac;
 using DataAccess.Concrete.EntityFramework.Contexts;
+using Dev_Folio.Utilities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    options.Password.RequireDigit = true;
+})
+.AddEntityFrameworkStores<SuperFolioContext>()
+.AddDefaultTokenProviders();
+
 // Autofac
 builder.Host
-       .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-       .ConfigureContainer<ContainerBuilder>(builder =>
-       {
-           builder.RegisterModule(new AutofacBusinessModule());
-       });
+    .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+    .ConfigureContainer<ContainerBuilder>(builder =>
+    {
+        builder.RegisterModule(new AutofacBusinessModule());
+    });
 
 var app = builder.Build();
 
@@ -23,7 +34,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -32,7 +42,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Authentication middleware'ini kullan
+app.UseAuthentication();
+
 app.UseAuthorization();
+
+// Default rolleri ve kullanıcıyı oluştur
+await RoleUtilities.EnsureRolesCreated(app.Services.GetRequiredService<RoleManager<IdentityRole>>());
+await UserUtilities.EnsureDefaultUserCreated(app.Services.GetRequiredService<UserManager<IdentityUser>>());
 
 app.MapControllerRoute(
     name: "area",

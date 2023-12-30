@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿// UserUtilities.cs
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
-namespace WebApp.Utilities
+namespace Dev_Folio.Utilities
 {
-    public class DefaultUserUtilities
+    public static class UserUtilities
     {
-        public static async Task CreateUser(UserManager<IdentityUser> userManager)
+        public static async Task EnsureDefaultUserCreated(UserManager<IdentityUser> userManager)
         {
             var allUsers = userManager.Users;
 

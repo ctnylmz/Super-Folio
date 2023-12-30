@@ -1,29 +1,23 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿// RoleUtilities.cs
+using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
 namespace Dev_Folio.Utilities
 {
-    public class RoleUtilities
+    public static class RoleUtilities
     {
-        private readonly RoleManager<IdentityRole> _roleManager;
-
-        public RoleUtilities(RoleManager<IdentityRole> roleManager)
+        public static async Task EnsureRolesCreated(RoleManager<IdentityRole> roleManager)
         {
-            _roleManager = roleManager;
-        }
+            // Admin ve User rollerini oluştur
+            string[] defaultRoles = { "Admin", "User" };
 
-        public async Task EnsureRolesCreated()
-        {
-            string[] rolesToCreate = { "Admin" };
-
-            foreach (var roleName in rolesToCreate)
+            foreach (var roleName in defaultRoles)
             {
-                var roleExists = await _roleManager.RoleExistsAsync(roleName);
+                var roleExist = await roleManager.RoleExistsAsync(roleName);
 
-                if (!roleExists)
+                if (!roleExist)
                 {
-                    var newRole = new IdentityRole { Name = roleName };
-                    await _roleManager.CreateAsync(newRole);
+                    await roleManager.CreateAsync(new IdentityRole(roleName));
                 }
             }
         }
