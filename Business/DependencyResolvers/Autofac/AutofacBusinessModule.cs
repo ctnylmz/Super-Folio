@@ -4,6 +4,7 @@ using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.EntityFramework.Contexts;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,11 @@ using System.Threading.Tasks;
 
 namespace Business.DependencyResolvers.Autofac
 {
-    public class AutofacBusinessModule : Module 
+    public class AutofacBusinessModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<SuperFolioContext>().AsSelf().SingleInstance();
+            builder.RegisterType<SuperFolioContext>().AsSelf().InstancePerLifetimeScope();
 
             builder.RegisterType<FeatureManager>().As<IFeatureService>().SingleInstance();
             builder.RegisterType<EfFeatureDal>().As<IFeatureDal>().SingleInstance();

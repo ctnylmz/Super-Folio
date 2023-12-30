@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.Contexts
 {
-    public class SuperFolioContext : DbContext
+    public class SuperFolioContext : IdentityDbContext
     {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
