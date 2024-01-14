@@ -1,11 +1,6 @@
 ﻿using Entities.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework.Contexts
 {
@@ -27,6 +22,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<Skill> Skills { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+
 
 
     }

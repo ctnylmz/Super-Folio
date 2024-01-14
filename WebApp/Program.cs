@@ -5,8 +5,6 @@ using Business.DependencyResolvers.Autofac;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Dev_Folio.Utilities;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +26,12 @@ builder.Host
         builder.RegisterModule(new AutofacBusinessModule());
     });
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/login";
+    options.AccessDeniedPath = "/login";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,12 +46,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Authentication middleware'ini kullan
 app.UseAuthentication();
 
 app.UseAuthorization();
 
-// Default rolleri ve kullanıcıyı oluştur
 await RoleUtilities.EnsureRolesCreated(app.Services.GetRequiredService<RoleManager<IdentityRole>>());
 await UserUtilities.EnsureDefaultUserCreated(app.Services.GetRequiredService<UserManager<IdentityUser>>());
 

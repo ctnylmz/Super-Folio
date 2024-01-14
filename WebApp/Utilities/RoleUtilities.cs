@@ -1,5 +1,4 @@
-﻿// RoleUtilities.cs
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
 namespace Dev_Folio.Utilities
@@ -8,8 +7,7 @@ namespace Dev_Folio.Utilities
     {
         public static async Task EnsureRolesCreated(RoleManager<IdentityRole> roleManager)
         {
-            // Admin ve User rollerini oluştur
-            string[] defaultRoles = { "Admin", "User" };
+            string[] defaultRoles = { "Admin" };
 
             foreach (var roleName in defaultRoles)
             {
