@@ -10,6 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface ITestimonialDal : IEntityRepository<Testimonial>
     {
-
+        List<Testimonial> GetLastThreeTestimonials();
     }
 }

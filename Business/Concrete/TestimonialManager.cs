@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -23,9 +24,29 @@ namespace Business.Concrete
             _testimonialDal.Add(testimonial);
         }
 
+        public void Delete(Testimonial testimonial)
+        {
+            _testimonialDal.Delete(testimonial);
+        }
+
+        public Testimonial Get(int Id)
+        {
+            return _testimonialDal.Get(t => t.Id == Id);
+        }
+
+        public List<Testimonial> GetLastThreeTestimonials()
+        {
+            return _testimonialDal.GetList().OrderByDescending(t => t.Created).Take(3).ToList();
+        }
+
         public List<Testimonial> GetList()
         {
            return _testimonialDal.GetList().ToList();
+        }
+
+        public void Update(Testimonial testimonial)
+        {
+            _testimonialDal.Update(testimonial);
         }
     }
 }

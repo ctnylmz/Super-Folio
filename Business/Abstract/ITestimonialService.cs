@@ -11,6 +11,12 @@ namespace Business.Abstract
     {
         void Add(Testimonial testimonial);
 
+        void Delete(Testimonial testimonial);
+        void Update(Testimonial testimonial);
+
         List<Testimonial> GetList();
+
+        List<Testimonial> GetLastThreeTestimonials();
+        Testimonial Get(int Id);
     }
 }

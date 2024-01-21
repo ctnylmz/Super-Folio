@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Business.Abstract;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Areas.Admin.Models;
 
@@ -8,9 +9,17 @@ namespace WebApp.Areas.Admin.Components.Message
 
     public class MessageList : ViewComponent
     {
+        ITestimonialService _testimonialService;
+
+        public MessageList(ITestimonialService testimonialService)
+        {
+            _testimonialService = testimonialService;
+        }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            var result = _testimonialService.GetLastThreeTestimonials();
+            return View(result);
         }
     }
 }

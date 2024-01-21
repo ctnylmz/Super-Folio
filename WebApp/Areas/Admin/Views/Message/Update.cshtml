@@ -1,0 +1,57 @@
+﻿@using Entities.Concrete
+@model Testimonial
+
+<div class="content-wrapper">
+    <div class="row">
+
+        <div class="col-11 mx-auto grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Message Update</h4>
+
+                    <form class="forms-sample" method="post">
+                        <input type="text" class="form-control" name="Id" value="@Model.Id">
+
+
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Company">Company</label>
+                            <input type="text" class="form-control" id="Company" name="Company" value="@Model.Company" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="text" class="form-control" id="Email" name="Email" value="@Model.Email" >
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <textarea class="form-control" rows="4" id="Description" name="Description" >@Model.Description</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Created">Created</label>
+                            <input type="text" class="form-control" id="Created" name="Created" value="@Model.Created" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            <select class="form-select form-control" asp-for="Status">
+                                <option value="False">False</option>
+                                <option value="True">True</option>
+                            </select>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <a href="/Admin/Message" class="btn btn-light">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

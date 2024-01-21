@@ -1,0 +1,35 @@
+﻿<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-10 mx-auto grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="card-title ml-1 mb-5">Message Details</h4>
+                                </div>
+                            </div>
+
+                            <div class="card border">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title">@Model.Name - @Model.Company</h5>
+                                        <p class="card-title text-end mt-auto">@Model.Created.ToShortDateString()</p>
+                                    </div>
+                                    <p class="card-text mb-5">@Model.Description</p>
+                                    <p class="card-text mb-5">@Model.Email</p>
+                                </div>
+                            </div>
+
+                           <div class="mt-4"> 
+                                <a href="/Admin/Message/" type="submit" class="btn btn-primary mr-2">Turn Back</a>
+                           </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

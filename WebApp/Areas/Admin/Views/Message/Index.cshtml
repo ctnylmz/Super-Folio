@@ -21,19 +21,22 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
+                                    
                                     <tr>
                                         <td>@item.Name</td>
                                         <td>@item.Company</td>
                                         <td>@item.Email</td>
                                         <td>
-                                            @(item.Description.Length <= 20 ? item.Description : item.Description.Substring(0, 20) + "...")
+                                            <a href="/Admin/Message/Details/@item.Id">
+                                                @(item.Description.Length <= 20 ? item.Description : item.Description.Substring(0, 20) + "...")
+                                            </a>
                                         </td>
                                         <td>@item.Created.ToShortDateString()</td>
 
                                         <td>@item.Status</td>
                                         <td>
-                                            <a class="badge badge-success" href="/Admin/Experience/Update/@item.Id">Update</a>
-                                            <a class="badge badge-danger" href="/Admin/Experience/Delete/@item.Id">Delete</a>
+                                            <a class="badge badge-success" href="/Admin/Message/Update/@item.Id">Update</a>
+                                            <a class="badge badge-danger" href="/Admin/Message/Delete/@item.Id">Delete</a>
                                         </td>
                                     </tr>
                                 }
