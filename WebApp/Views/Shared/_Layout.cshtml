@@ -2,15 +2,16 @@
 <!-- upto 2 directory depth-->
 <html lang="en-US">
 
-@await Html.PartialAsync("HeaderPartial")
+@await Html.PartialAsync("/Views/Default/HeaderPartial.cshtml")
 
 <body id="top">
 
-    @await Html.PartialAsync("NavbarPartial")
+    @await Html.PartialAsync("/Views/Default/NavbarPartial.cshtml")
 
     @RenderBody()
 
-    @await Html.PartialAsync("FooterPartial")
+    @await Html.PartialAsync("/Views/Default/FooterPartial.cshtml")
+
 
     <div id="scrolltop"><a class="btn btn-secondary" href="#top"><span class="icon"><i class="fas fa-angle-up fa-x"></i></span></a></div>
     <script src="~/scripts/imagesloaded.pkgd.min.js?ver=1.2.0"></script>

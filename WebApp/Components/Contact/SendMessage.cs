@@ -6,11 +6,11 @@ namespace WebApp.Components.Contact
 {
     public class SendMessage : ViewComponent
     {
-        IMessageService _messageService;
+        ITestimonialService _testimonialService;
 
-        public SendMessage(IMessageService messageService)
+        public SendMessage(ITestimonialService testimonialService)
         {
-            _messageService = messageService;
+            _testimonialService = testimonialService;
         }
 
         public IViewComponentResult Invoke()
