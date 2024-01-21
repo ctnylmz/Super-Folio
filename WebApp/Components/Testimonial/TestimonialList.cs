@@ -14,7 +14,7 @@ namespace WebApp.Components.Testimonial
 
         public IViewComponentResult Invoke()
         {
-            var result = _testimonialService.GetList();
+            var result = _testimonialService.GetList().Where(t => t.Status == true);
             return View(result);
         }
     }
