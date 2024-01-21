@@ -53,5 +53,41 @@ namespace WebApp.Areas.Admin.Controllers
             return View(entity);
         }
 
+        [Route("Admin/ChangePassword")]
+        public IActionResult Password()
+        {
+            return View();
+        }
+
+        [Route("Admin/ChangePassword")]
+        [HttpPost]
+        public async Task<IActionResult> Password(Password password)
+        {
+            if (ModelState.IsValid)
+            {
+                if (password.NewPassword == password.ConfirmPassword)
+                {
+                    var user = await _userManager.GetUserAsync(User);
+                    var changePasswordResult = await _userManager.ChangePasswordAsync(user, password.currentPassword, password.NewPassword);
+                    if (changePasswordResult.Succeeded)
+                    {
+                        TempData["Message"] = "Başarıyla Güncellendi";
+                        return View();
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("currentPassword", "Eski Şifre Hatalı");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("currentPassword", "Yeni Şife ve Tekrar Şifre Hatalı");
+                }
+            }
+
+            return View();
+
+        }
+
     }
 }

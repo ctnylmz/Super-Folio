@@ -2,7 +2,7 @@
 <div class="content-wrapper">
     <div class="row">
         <div class="col-md-10 mx-auto grid-margin stretch-card">
-          
+
             <div class="card">
                 <div class="card-body">
                     <div class="card">
@@ -11,9 +11,19 @@
                             {
                                 <p class="text-success text-center">@TempData["Message"]</p>
                             }
-                            <h4 class="card-title">Profile Settings</h4>
-                          
-                            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="card-title">Profile Settings</h4>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a href="/Admin/ChangePassword">
+                                        Change Password
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <form  method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="exampleInputName1">User Name</label>
                                     <input type="text" class="form-control" id="exampleInputName1" value="@Model.UserName" name="UserName">
@@ -33,9 +43,9 @@
                                         </span>
                                     </div>
                                 </div>
-                          
+
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                <button class="btn btn-light" href="/Admin/Default">Cancel</button>
+                                <a class="btn btn-light" href="/Admin/Default">Cancel</a>
                             </form>
                         </div>
                     </div>
