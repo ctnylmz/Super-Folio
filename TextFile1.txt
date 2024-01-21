@@ -2,3 +2,5 @@ Autofac
 Fluent Validation
 ------
 I Will Create Message
+I Will Reset Password Page
+I Will Logout

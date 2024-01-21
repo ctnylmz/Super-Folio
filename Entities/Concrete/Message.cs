@@ -14,6 +14,8 @@ namespace Entities.Concrete
         public string Company { get; set; }
         public string Email { get; set; }
         public string Description { get; set; }
+        public DateTime Created { get; set; }
         public bool Status { get; set; }
+
     }
 }
