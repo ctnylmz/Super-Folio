@@ -22,6 +22,7 @@ namespace WebApp.Controllers
 
             _testimonialService.Add(testimonial);
 
+            TempData["SuccessMessage"] = "Mesajiniz basariyla iletilmistir";
 
             return RedirectToAction("Index","Default");
         }

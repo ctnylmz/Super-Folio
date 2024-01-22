@@ -1,4 +1,11 @@
-﻿<div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+﻿@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        alert('@TempData["SuccessMessage"]');
+    </script>
+}
+
+<div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
     <div class="bg-light my-2 p-3 pt-2">
         <form action="SendMessage" method="post">
             <div class="form-group my-2">
