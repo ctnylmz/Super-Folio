@@ -42,7 +42,10 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<ContactManager>().As<IContactService>().SingleInstance();
             builder.RegisterType<EfContactDal>().As<IContactDal>().SingleInstance();
-       
+
+            builder.RegisterType<SocialManager>().As<ISocialService>().SingleInstance();
+            builder.RegisterType<EfSocialMediaDal>().As<ISocialMediaDal>().SingleInstance();
+
         }
     }
 }
