@@ -1,5 +1,6 @@
-Autofac
+﻿Autofac
 Fluent Validation
 ------
-I Will Create Message
+Arayüzde mesaj gönderdikden sonra uyarı gelmesi lazım.
+
 
