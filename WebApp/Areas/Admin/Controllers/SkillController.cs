@@ -19,7 +19,12 @@ namespace WebApp.Areas.Admin.Controllers
         [Route("Admin/Skill")]
         public IActionResult Index()
         {
+            var message = TempData["Message"] as string;
+
+            ViewData["Message"] = message;
+
             var result = _skillService.GetList();
+
             return View(result);
         }
 
@@ -35,6 +40,10 @@ namespace WebApp.Areas.Admin.Controllers
         public IActionResult Add(Skill skill)
         {
             _skillService.Add(skill);
+
+            TempData["Message"] = "Successfully Added";
+
+
             return RedirectToAction("Index");
         }
 
@@ -42,8 +51,13 @@ namespace WebApp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add(int Id)
         {
-            var skill = _skillService.Get(Id);  
+            var skill = _skillService.Get(Id);
+
             _skillService.Delete(skill);
+
+            TempData["Message"] = "Successfully Deleted";
+
+
             return RedirectToAction("Index");
 
         }
@@ -61,6 +75,10 @@ namespace WebApp.Areas.Admin.Controllers
         public IActionResult Update(Skill skill)
         {
             _skillService.Update(skill);
+
+            TempData["Message"] = "Successfully Updated";
+
+
             return RedirectToAction("Index");
         }
     }

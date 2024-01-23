@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    var message = ViewData["Message"] as string;
+}
 
 <div class="content-wrapper">
     <div class="row">
@@ -6,6 +8,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Message List</h4>
+
+                    @if (!string.IsNullOrEmpty(message))
+                    {
+                        <div class="alert alert-success">
+                            @message
+                        </div>
+                    }
+
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>

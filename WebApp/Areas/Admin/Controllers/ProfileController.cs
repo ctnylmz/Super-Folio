@@ -48,7 +48,7 @@ namespace WebApp.Areas.Admin.Controllers
 
             if (result.Succeeded)
             {
-                TempData["Message"] = "Başarıyla Güncellendi";
+                TempData["Message"] = "Successfully Updated";
                 return RedirectToAction("Index");
             }
 
@@ -73,17 +73,17 @@ namespace WebApp.Areas.Admin.Controllers
                     var changePasswordResult = await _userManager.ChangePasswordAsync(user, password.currentPassword, password.NewPassword);
                     if (changePasswordResult.Succeeded)
                     {
-                        TempData["Message"] = "Başarıyla Güncellendi";
+                        TempData["Message"] = "Successfully Updated";
                         return View();
                     }
                     else
                     {
-                        ModelState.AddModelError("currentPassword", "Eski Şifre Hatalı");
+                        ModelState.AddModelError("currentPassword", "Old Password is Incorrect");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("currentPassword", "Yeni Şife ve Tekrar Şifre Hatalı");
+                    ModelState.AddModelError("currentPassword", "New Password and Again Password Incorrect");
                 }
             }
 

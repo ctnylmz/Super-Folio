@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Areas.Admin.Models;
 
 namespace WebApp.Areas.Admin.Controllers
 {
@@ -19,6 +20,10 @@ namespace WebApp.Areas.Admin.Controllers
         [Route("Admin/Service")]
         public IActionResult Index()
         {
+            var message = TempData["Message"] as string;
+
+            ViewData["Message"] = message;
+
             var result = _service.GetList();
             return View(result);
         }
@@ -32,18 +37,40 @@ namespace WebApp.Areas.Admin.Controllers
 
         [Route("Admin/Service/Add")]
         [HttpPost]
-        public IActionResult Add(Service service)
+        public async Task<IActionResult> Add(ServiceVM service)
         {
-            _service.Add(service);
+
+            if (service.ImageFile != null)
+            {
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(service.ImageFile.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = resource + "/wwwroot/images/services/" + imageName;
+                var stream = new FileStream(saveLocation, FileMode.Create);
+                await service.ImageFile.CopyToAsync(stream);
+                service.ImageUrl = imageName;
+            }
+          
+            var newService = new Service
+            {
+                Title = service.Title,
+                ImageUrl = service.ImageUrl
+            };
+
+            _service.Add(newService);
+
+            TempData["Message"] = "Successfully Added";
+
             return RedirectToAction("Index");
         }
 
         [Route("Admin/Service/Delete/{Id}")]
         [HttpGet]
-        public IActionResult Add(int Id)
+        public IActionResult Delete(int Id)
         {
             var service = _service.Get(Id);
             _service.Delete(service);
+            TempData["Message"] = "Successfully Delete";
             return RedirectToAction("Index");
 
         }
@@ -58,9 +85,33 @@ namespace WebApp.Areas.Admin.Controllers
 
         [Route("Admin/Service/Update/{id}")]
         [HttpPost]
-        public IActionResult Update(Service service)
+        public async Task<IActionResult> Update(ServiceVM service)
         {
-            _service.Update(service);
+            var user = _service.Get(service.Id);
+
+            if (service.ImageFile != null)
+            {
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(service.ImageFile.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = resource + "/wwwroot/images/services/" + imageName;
+                var stream = new FileStream(saveLocation, FileMode.Create);
+                await service.ImageFile.CopyToAsync(stream);
+                service.ImageUrl = imageName;
+            }
+
+            var newService = new Service
+            {
+                Id = service.Id,
+                Title = service.Title,
+                ImageUrl = service.ImageUrl
+            };
+
+            _service.Update(newService);
+
+            TempData["Message"] = "Successfully Updateing";
+
+
             return RedirectToAction("Index");
         }
     }

@@ -1,11 +1,22 @@
 ﻿@using Entities.Concrete
 @model List<Service>
+@{
+    var message = ViewData["Message"] as string;
+}
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-9 mx-auto grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Service Settings</h4>
+                   
+                    @if (!string.IsNullOrEmpty(message))
+                    {
+                        <div class="alert alert-success">
+                            @message
+                        </div>
+                    }
+
                     <a class="btn btn-outline-primary w-100 my-2" href="/Admin/Service/Add">Add Service</a>
                     <div class="table-responsive">
                         <table class="table table-striped">

@@ -20,8 +20,14 @@ namespace WebApp.Areas.Admin.Controllers
         [Route("Admin/Message")]
         public IActionResult Index()
         {
+            var message = TempData["Message"] as string;
+
+            ViewData["Message"] = message;
+
             var result = _testimonialService.GetList();
+
             return View(result);
+
         }
 
         [Route("Admin/Message/Details/{id}")]
@@ -45,6 +51,10 @@ namespace WebApp.Areas.Admin.Controllers
             try
             {
                 _testimonialService.Update(testimonial);
+
+                TempData["Message"] = "Successfully Updated";
+
+
                 return RedirectToAction("Index");
             }
             catch (DbUpdateConcurrencyException ex)
@@ -59,7 +69,11 @@ namespace WebApp.Areas.Admin.Controllers
         public IActionResult Delete(int id)
         {
             var testimonial = _testimonialService.Get(id);
+
             _testimonialService.Delete(testimonial);
+
+            TempData["Message"] = "Successfully Deleted";
+
             return RedirectToAction("Index");
         }
     }

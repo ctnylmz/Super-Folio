@@ -1,11 +1,24 @@
 ﻿@using Entities.Concrete
 @model List<Skill>
+
+@{
+    var message = ViewData["Message"] as string;
+}
+
 <div class="content-wrapper">
     <div class="row">
         <div class="col-md-10 grid-margin stretch-card mx-auto">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mt-2 ml-3">Skill Settings</h4>
+
+                    @if (!string.IsNullOrEmpty(message))
+                    {
+                        <div class="alert alert-success">
+                            @message
+                        </div>
+                    }
+
                     <a href="/admin/skill/add" class="btn btn-outline-primary w-100 my-2">Add Skill</a>
                     <div class="table-responsive">
                         <table class="table">
