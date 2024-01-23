@@ -11,6 +11,7 @@ namespace Business.Abstract
     {
         void Add(About about);
         void Update(About about);
+        Task UpdateAsync(About about);
         List<About> GetList();
     }
 }

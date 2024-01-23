@@ -10,6 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface IAboutDal : IEntityRepository<About>
     {
-
+        Task UpdateAsync(About about);
     }
 }

@@ -1,6 +1,6 @@
 ﻿Autofac
 Fluent Validation
 ------
-Arayüzde mesaj gönderdikden sonra uyarı gelmesi lazım.
+
 
 

@@ -23,6 +23,11 @@ namespace Business.Concrete
           _aboutDal.Update(about);
         }
 
+        public async Task UpdateAsync(About about)
+        {
+            await _aboutDal.UpdateAsync(about);
+        }
+
         void IAboutService.Add(About about)
         {
             _aboutDal.Add(about);

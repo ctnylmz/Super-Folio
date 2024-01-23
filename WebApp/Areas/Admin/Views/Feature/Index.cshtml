@@ -6,6 +6,11 @@
                 <div class="card-body">
                     <h4 class="card-title">Feature Settings</h4>
 
+                    @if (TempData["Message"] != null)
+                    {
+                        <p class="text-success text-center">@TempData["Message"]</p>
+                    }
+
                     <form method="post">
 
                         <input type="hidden" class="form-control" id="Id" name="Id" value="@Model.Id">

@@ -28,6 +28,9 @@ namespace WebApp.Areas.Admin.Controllers
         public IActionResult Index(Feature feature)
         {
             _featureService.Update(feature);
+
+            TempData["Message"] = "Successfully Updated";
+
             return RedirectToAction("Index");
         }
     }

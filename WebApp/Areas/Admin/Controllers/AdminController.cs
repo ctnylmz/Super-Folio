@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Areas.Admin.Controllers
@@ -7,10 +8,19 @@ namespace WebApp.Areas.Admin.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        [Route("/Admin/Default")]
-        public IActionResult Index()
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public AdminController(UserManager<IdentityUser> userManager)
         {
-            return View();
+            _userManager = userManager;
+        }
+
+        [Route("/Admin/Default")]
+        public async Task<IActionResult> Index()
+        {
+            var result = await _userManager.GetUserAsync(User);
+
+            return View(result);
         }
     }
 }
