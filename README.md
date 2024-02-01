@@ -18,7 +18,7 @@
 - update-database
 
 # 5 Configure Program.cs:
-- Uncomment the necessary code lines in the Program.cs file.
+- Uncomment the necessary code lines in the WebApp>Program.cs file.
 
 # 6 Run Project:
 - Start the project and navigate to https://localhost:7220/ in your browser.
