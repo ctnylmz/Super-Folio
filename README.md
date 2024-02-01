@@ -10,7 +10,7 @@
 - Navigate to the project folder and open it in your preferred code editor.
 
 # 3 Database Configuration:
-- Make MSSQL database connection adjustments in the appsettings.json file.
+- Make MSSQL database connection adjustments in the DataAccess>Concrete>EntityFramework>Context>SuperFolioContext file.
 
 # 4 Run Migrations:
 - Open Package Manager Console and run the following commands:
@@ -18,7 +18,7 @@
 - update-database
 
 # 5 Configure Program.cs:
-- Uncomment the necessary code lines in the Program.cs file.
+- Uncomment the necessary code lines in the WebApp>Program.cs file.
 
 # 6 Run Project:
 - Start the project and navigate to https://localhost:7220/ in your browser.
