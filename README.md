@@ -1,5 +1,5 @@
-Super-Folio ASP.NET Core 6 Project
-Super-Folio is an ASP.NET Core 6 project that provides a portfolio and simple blog template. Follow the steps below to set up and run the project.
+- Super-Folio ASP.NET Core 6 Project
+- Super-Folio is an ASP.NET Core 6 project that provides a portfolio and simple blog template. Follow the steps below to set up and run the project.
 
 # Installation Steps
 
