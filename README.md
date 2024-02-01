@@ -14,7 +14,7 @@ Super-Folio is an ASP.NET Core 6 project that provides a portfolio and simple bl
 
 # 4 Run Migrations:
 - Open Package Manager Console and run the following commands:
-- add-migration StartDevFolioDB 
+- add-migration StartSuperFolioDB
 - update-database
 
 # 5 Configure Program.cs:
@@ -23,9 +23,8 @@ Super-Folio is an ASP.NET Core 6 project that provides a portfolio and simple bl
 # 6 Run Project:
 - Start the project and navigate to https://localhost:7220/ in your browser.
 
-
 # 7 Access Admin Page:
-- Visit https://localhost:7220/admin to access the admin page.
+- Visit https://localhost:7220/Admin/Default to access the admin page.
 
 # 8 Admin Credentials:
 - Use the following credentials to log in:
@@ -35,5 +34,10 @@ Super-Folio is an ASP.NET Core 6 project that provides a portfolio and simple bl
 
 # 9 Update Pages Settings:
 - Go to the Pages Settings and make any necessary edits.
+
+# 10 Additional info SocialMedias Page:
+- fab fa-linkedin
+- fab fa-facebook
+- fab fa-instagram
 
 
