@@ -44,5 +44,10 @@ namespace Business.Concrete
         {
             _serviceDal.Update(service);
         }
+
+        public async Task UpdateAsync(Service service)
+        {
+            await _serviceDal.UpdateAsync(service);
+        }
     }
 }

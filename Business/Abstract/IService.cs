@@ -13,6 +13,7 @@ namespace Business.Abstract
         List<Service> GetList();
         void Delete(Service service);
         void Update(Service service);
+        Task UpdateAsync(Service service);
         Service Get(int Id);
     }
 }

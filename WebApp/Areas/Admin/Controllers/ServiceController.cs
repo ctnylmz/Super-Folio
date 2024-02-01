@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Areas.Admin.Models;
 
@@ -97,19 +98,14 @@ namespace WebApp.Areas.Admin.Controllers
                 var saveLocation = resource + "/wwwroot/images/services/" + imageName;
                 var stream = new FileStream(saveLocation, FileMode.Create);
                 await service.ImageFile.CopyToAsync(stream);
-                service.ImageUrl = imageName;
+                user.ImageUrl = imageName;
             }
+            user.Title = service.Title;
 
-            var newService = new Service
-            {
-                Id = service.Id,
-                Title = service.Title,
-                ImageUrl = service.ImageUrl
-            };
+            await _service.UpdateAsync(user);
 
-            _service.Update(newService);
+            TempData["Message"] = "Successfully Updated";
 
-            TempData["Message"] = "Successfully Updateing";
 
 
             return RedirectToAction("Index");

@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    var message = ViewData["Message"] as string;
+}
 
 <div class="content-wrapper">
     <div class="row">
@@ -7,6 +9,14 @@
                 <div class="card-body">
                     <h4 class="card-title">Social Settings</h4>
                     <a href="/admin/Social/add" class="btn btn-outline-primary w-100 my-2">Add Social</a>
+
+                    @if (!string.IsNullOrEmpty(message))
+                    {
+                        <div class="alert alert-success my-2">
+                            @message
+                        </div>
+                    }
+
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>

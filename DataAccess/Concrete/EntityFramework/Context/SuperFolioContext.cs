@@ -9,7 +9,9 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-UDO4HAR\\SQLEXPRESS;database=SuperFolioDB;integrated security=true");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-HK3Q21E;Database=SuperFolioDB;Integrated Security=True;");
+
+
         }
 
         public DbSet<About> Abouts { get; set; }

@@ -22,6 +22,11 @@ namespace WebApp.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var result = _socialService.GetList();
+
+            var message = TempData["Message"] as string;
+
+            ViewData["Message"] = message;
+
             return View(result);
         }
 
@@ -36,6 +41,9 @@ namespace WebApp.Areas.Admin.Controllers
         public IActionResult Add(SocialMedia socialMedia)
         {
             _socialService.Add(socialMedia);
+
+            TempData["Message"] = "Successfully Added";
+
             return RedirectToAction("Index");
         }
 
@@ -51,6 +59,9 @@ namespace WebApp.Areas.Admin.Controllers
         public IActionResult Update(SocialMedia socialMedia)
         {
             _socialService.Update(socialMedia);
+
+            TempData["Message"] = "Successfully Updated";
+
             return RedirectToAction("Index");
 
         }
@@ -60,6 +71,9 @@ namespace WebApp.Areas.Admin.Controllers
         {
             var socialMedia = _socialService.Get(id);
             _socialService.Delete(socialMedia);
+
+            TempData["Message"] = "Successfully Deleted";
+
             return RedirectToAction("Index");
         }
     }

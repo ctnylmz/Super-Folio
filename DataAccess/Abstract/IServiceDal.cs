@@ -10,6 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface IServiceDal : IEntityRepository<Service>
     {
-
+        Task UpdateAsync(Service service);
     }
 }

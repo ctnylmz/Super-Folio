@@ -2,16 +2,21 @@
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfServiceDal : EfEntityRepositoryBase<Service,SuperFolioContext> , IServiceDal
+    public class EfServiceDal : EfEntityRepositoryBase<Service, SuperFolioContext>, IServiceDal
     {
-
+        public async Task UpdateAsync(Service entity)
+        {
+            using (var context = new SuperFolioContext())
+            {
+                var updatedEntity = context.Entry(entity);
+                updatedEntity.State = EntityState.Modified;
+                await context.SaveChangesAsync();
+            }
+        }
     }
 }

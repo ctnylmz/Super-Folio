@@ -4,26 +4,35 @@
         <div class="col-11 mx-auto grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Portfolio Add</h4>
-                    <input type="hidden" class="form-control"  name="Id" value="@Model.Id">
+                    <h4 class="card-title">Portfolio Update</h4>
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
 
-                    <form class="forms-sample" method="post">
-                        <div class="form-group">
+                        <input type="hidden" class="form-control" name="Id" value="@Model.Id">
+
+
+                        <div class="form-group my-4">
                             <label for="Name">Name</label>
                             <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name">
                         </div>
-                        <div class="form-group">
+
+                        <div class="form-group my-4">
                             <label for="Description">Description</label>
-                            <textarea class="form-control" rows="4 id="Description" name="Description">@Model.Description</textarea>
+                            <textarea type="text" class="form-control" id="Description" name="Description" rows="4">@Model.Description</textarea
                         </div>
 
-                        <div class="form-group">
-                            <label for="ImageUrl">ImageUrl</label>
-                            <input type="text" class="form-control" id="ImageUrl" name="ImageUrl" value="@Model.ImageUrl">
+                        <div class="form-group my-4">
+                            <label>File upload</label>
+                            <input type="file" name="ImageFile" class="file-upload-default">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" name="img[]" value="@Model.ImageUrl">
+                                <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                </span>
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                        <a href="/Admin/Portfolio" class="btn btn-light">Cancel</a>
+                        <button type="submit" class="btn btn-primary mr-2">Update</button>
+                        <a href="/Admin/Portfolio " class="btn btn-light">Cancel</a>
                     </form>
                 </div>
             </div>
