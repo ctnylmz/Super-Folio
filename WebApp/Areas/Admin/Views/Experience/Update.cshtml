@@ -3,9 +3,10 @@
         <div class="col-md-9 mx-auto grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Experience Add</h4>
+                    <h4 class="card-title">Experience Update</h4>
 
-                    <form class="forms-sample" method="post">
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
+
                         <input type="hidden" class="form-control"  name="Id" value="@Model.Id">
 
                         <div class="form-group row">
@@ -21,9 +22,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="ImageUrl" class="col-sm-3 col-form-label">Image Url</label>
+                            <label for="ImageUrl" class="col-sm-3 col-form-label">File upload</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="ImageUrl" name="ImageUrl" value="@Model.ImageUrl">
+                                <input type="file" name="ImageFile" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" name="img[]" value="@Model.ImageUrl">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">

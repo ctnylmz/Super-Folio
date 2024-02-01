@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Areas.Admin.Models;
 
 namespace WebApp.Areas.Admin.Controllers
 {
@@ -19,7 +20,12 @@ namespace WebApp.Areas.Admin.Controllers
         [Route("Admin/Experience")]
         public IActionResult Index()
         {
+            var message = TempData["Message"] as string;
+
+            ViewData["Message"] = message;
+
             var result = _experienceService.GetList();
+
             return View(result);
         }
 
@@ -31,9 +37,32 @@ namespace WebApp.Areas.Admin.Controllers
 
         [HttpPost]
         [Route("Admin/Experience/Add")]
-        public IActionResult Add(Experience experience)
+        public async Task<IActionResult> Add(ExperienceVM experience)
         {
-            _experienceService.Add(experience);
+            if (experience.ImageFile != null)
+            {
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(experience.ImageFile.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = resource + "/wwwroot/images/experience/" + imageName;
+                var stream = new FileStream(saveLocation, FileMode.Create);
+                await experience.ImageFile.CopyToAsync(stream);
+                experience.ImageUrl = imageName;
+            }
+
+            var newExperience = new Experience
+            {
+                Name = experience.Name,
+                Date = experience.Date,
+                Description = experience.Description,
+                ImageUrl = experience.ImageUrl,
+            };
+
+            _experienceService.Add(newExperience);
+
+
+            TempData["Message"] = "Successfully Added";
+
             return RedirectToAction("Index");
         }
 
@@ -46,9 +75,29 @@ namespace WebApp.Areas.Admin.Controllers
 
         [HttpPost]
         [Route("Admin/Experience/Update/{id}")]
-        public IActionResult Update(Experience experience)
+        public async Task<IActionResult> Update(ExperienceVM experience)
         {
-            _experienceService.Update(experience);
+            var user = _experienceService.Get(experience.Id);
+
+            if (experience.ImageFile != null)
+            {
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(experience.ImageFile.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = resource + "/wwwroot/images/experience/" + imageName;
+                var stream = new FileStream(saveLocation, FileMode.Create);
+                await experience.ImageFile.CopyToAsync(stream);
+                user.ImageUrl = imageName;
+            }
+
+            user.Name = experience.Name;
+            user.Date = experience.Date;
+            user.Description = experience.Description;
+
+            _experienceService.Update(user);
+
+            TempData["Message"] = "Successfully Updated";
+
             return RedirectToAction("Index");
 
         }
@@ -58,6 +107,8 @@ namespace WebApp.Areas.Admin.Controllers
         {
             var experience = _experienceService.Get(id);
             _experienceService.Delete(experience);
+            TempData["Message"] = "Successfully Delete";
+
             return RedirectToAction("Index");
         }
     }
