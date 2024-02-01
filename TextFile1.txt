@@ -1,6 +1,0 @@
-﻿Autofac
-Fluent Validation
-------
-
-
-
