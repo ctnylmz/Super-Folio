@@ -23,6 +23,25 @@ namespace WebApp.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var result = _aboutService.GetList().FirstOrDefault();
+
+            if (result == null)
+            {
+                var newAbout = new About
+                {
+                    Title = "",
+                    Description = "",
+                    Age = "",
+                    Email = "",
+                    Phone = "",
+                    Address = "",
+                    ImageUrl = "",
+                };
+
+                _aboutService.Add(newAbout);
+
+                return RedirectToAction("Index");
+            }
+
             return View(result);
         }
 

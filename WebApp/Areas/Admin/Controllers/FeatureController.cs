@@ -20,6 +20,22 @@ namespace WebApp.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var result = _featureService.GetList().FirstOrDefault();
+
+            if (result == null)
+            {
+                var newFeature = new Feature
+                {
+                    Header = "",
+                    Title = "",
+                    Name = "",
+                };
+
+                _featureService.Add(newFeature);
+
+                return RedirectToAction("Index");
+            }
+
+
             return View(result);
         }
 
