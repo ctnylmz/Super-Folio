@@ -1,10 +1,10 @@
-Dev-Folio ASP.NET Core 6 Project
-Dev-Folio is an ASP.NET Core 6 project that provides a portfolio and simple blog template. Follow the steps below to set up and run the project.
+Super-Folio ASP.NET Core 6 Project
+Super-Folio is an ASP.NET Core 6 project that provides a portfolio and simple blog template. Follow the steps below to set up and run the project.
 
 # Installation Steps
 
 # 1 Download Project:
-- Clone or download the project from Dev-Folio GitHub repository.
+- Clone or download the project from Super-Folio GitHub repository.
 
 # 2 Open Project:
 - Navigate to the project folder and open it in your preferred code editor.
