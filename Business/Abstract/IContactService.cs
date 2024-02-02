@@ -10,6 +10,7 @@ namespace Business.Abstract
     public interface IContactService
     {
         void Add(Contact contact);
+        void Update(Contact contact);
         List<Contact> GetList(); 
     }
 }

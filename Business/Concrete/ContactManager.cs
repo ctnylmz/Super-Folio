@@ -27,5 +27,12 @@ namespace Business.Concrete
         {
            return _contactDal.GetList().ToList();
         }
+
+        public void Update(Contact contact)
+        {
+            _contactDal.Update(contact);
+
+
+        }
     }
 }

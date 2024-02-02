@@ -52,8 +52,8 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-await RoleUtilities.EnsureRolesCreated(app.Services.GetRequiredService<RoleManager<IdentityRole>>());
-await UserUtilities.EnsureDefaultUserCreated(app.Services.GetRequiredService<UserManager<IdentityUser>>());
+//await RoleUtilities.EnsureRolesCreated(app.Services.GetRequiredService<RoleManager<IdentityRole>>());
+//await UserUtilities.EnsureDefaultUserCreated(app.Services.GetRequiredService<UserManager<IdentityUser>>());
 
 app.MapControllerRoute(
     name: "area",

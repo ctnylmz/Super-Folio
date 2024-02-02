@@ -23,6 +23,9 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Admin\images\faces\" />
+    <Folder Include="wwwroot\images\services\" />
+    <Folder Include="wwwroot\images\photo\" />
+    <Folder Include="wwwroot\images\portfolio\" />
   </ItemGroup>
 
 </Project>
